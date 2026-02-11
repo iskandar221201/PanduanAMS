@@ -1,119 +1,65 @@
-# 🏗️ Panduan Modul Project & Konstruksi
+# 🏗️ Panduan Modul Manajemen Proyek (Master Project)
 
-Dokumen ini menjelaskan cara pengelolaan data master **Proyek (Perumahan)** dan pemantauan **Progres Konstruksi** lapangan.
+Modul **Manajemen Proyek** adalah jantung dari struktur data di AMS. Modul ini digunakan oleh **Super Admin** atau level pimpinan untuk mendaftarkan dan mengelola seluruh proyek perumahan yang berjalan di bawah naungan perusahaan.
 
----
+## 1. Konsep "Project Scope" (Sekat Data)
 
-## 🏢 1. Manajemen Proyek (Admin & Project Manager)
-Menu: **Manajemen Proyek** (Akses khusus Admin/PM)
+AMS didesain untuk menangani banyak proyek secara sekaligus (*Multi-Project*). Modul ini berperan penting sebagai pemisah (sekat) data agar operasional antar proyek tidak saling bercampur.
 
-Modul ini adalah hulu dari semua data. Sebelum bisa berjualan atau membangun, Anda harus mendefinisikan proyeknya terlebih dahulu.
-
-### A. Menambah Proyek Baru
-1.  Klik **Tambah Proyek**.
-2.  Isi data wajib:
-    *   **Nama Project:** (Misal: *Grand City Residence*)
-    *   **Lokasi:** Alamat atau Kota.
-    *   **Logo Proyek:** (Opsional) Format JPG/PNG, Max 5MB. Akan muncul di kop surat/laporan.
-    *   **File Siteplan:** (Wajib untuk fitur Peta Digital) Gambar denah kavling bersih (JPG/PNG).
-3.  Klik **Simpan**.
-
-### B. Mengelola Aset (Kavling)
-Setelah proyek dibuat, langkah selanjutnya adalah mendaftarkan unit kavling.
-*   **Format Penamaan:** Sistem mewajibkan format **BLOK-NOMOR** (Huruf-Angka) dengan pemisah strip.
-    *   ✅ Benar: `A-01`, `B-12A`
-    *   ❌ Salah: `A01` (tanpa strip), `Blok A No 1` (terlalu panjang)
-*   Aturan ini penting agar sistem **Siteplan Digital** bisa otomatis memetakan unit ke gambar.
+### Bagaimana Scope Bekerja?
+1.  **Session-Based Filtering:** Saat user login, mereka sudah ditugaskan pada satu proyek aktif. ID proyek tersebut disimpan dalam session AMS.
+2.  **Otomatisasi Filter:** Hampir seluruh modul lain (Kavling, Prospek, Booking, Biaya, dll) akan secara otomatis hanya menampilkan data yang sesuai dengan proyek yang sedang aktif di session user tersebut.
+3.  **Keamanan Data:** Tim sales atau admin di Proyek A tidak akan bisa melihat data konsumen di Proyek B, kecuali mereka memiliki izin khusus (Scope: `all_projects`).
 
 ---
 
-## 🏗️ 2. Modul Template Konstruksi (RAB/BoQ Master)
-Menu: **Konstruksi > Template Pekerjaan**
+## 2. Fitur Utama
 
-Sebelum membuat SPK Pembangunan satu per satu, sangat disarankan untuk membuat **Template Pekerjaan** terlebih dahulu. Fitur ini berfungsi sebagai "Master RAB" yang bisa digunakan berulang kali.
+### Pengelolaan Data Proyek
+*   **Nama Proyek:** Identitas resmi perumahan.
+*   **Lokasi:** Alamat atau area pemasaran proyek.
+*   **Deskripsi:** Informasi tambahan mengenai keunggulan atau detail proyek.
+*   **Logo Proyek:** Digunakan sebagai identitas visual pada header laporan (PDF/Excel) yang dicetak melalui AMS.
 
-### A. Manfaat Template
-1.  **Efisiensi Waktu:** Tidak perlu input item pekerjaan (Pondasi, Dinding, Atap) berulang-ulang untuk setiap rumah tipe yang sama.
-2.  **Standarisasi:** Memastikan setiap unit dibangun dengan spesifikasi RAB yang seragam.
-3.  **Fleksibilitas:** Bisa diedit per proyek atau berlaku global (untuk semua proyek).
-
-### B. Cara Membuat Template Baru
-1.  Klik **Buat Template Baru**.
-2.  **Nama Template:** Berikan nama yang jelas, misal: *RAB Tipe 36 Standar* atau *Pagar Keliling Kavling*.
-3.  **Pilih Proyek:**
-    *   *Pilih Nama Proyek:* Template hanya muncul di proyek tersebut.
-    *   *Kosongkan:* Template bersifat **Global** (bisa dipakai di semua proyek).
-4.  **Input Detail Pekerjaan:**
-    *   Masukkan daftar item pekerjaan, volume standar, dan satuan.
-    *   Contoh:
-        *   *Pekerjaan Persiapan* - *Pembersihan Lahan* - 1 ls
-        *   *Pekerjaan Struktur* - *Galian Tanah* - 15 m3
-5.  Klik **Simpan**.
-
-### C. Cara Menggunakan Template (Load Template)
-Saat Anda membuat Target Pembangunan (SPK) baru:
-1.  Di form pembuatan target, cari tombol atau dropdown **"Load Template"**.
-2.  Pilih template yang sesuai (misal: *RAB Tipe 36 Standar*).
-3.  Sistem otomatis **mengisi tabel item pekerjaan** dengan data dari template.
-4.  Anda tinggal menyesuaikan sedikit volume jika ada perbedaan kondisi lapangan.
+### Pengelolaan Site Plan & Arsip
+Anda dapat mengunggah file gambar Site Plan (JPG/PNG) di setiap proyek.
+*   **Site Plan Digital:** Berperan sebagai referensi visual utama.
+*   **Pembaruan File:** AMS mendukung penggantian (update) file site plan. Namun, perlu diperhatikan bahwa **dimensi (lebar & tinggi) serta aspek rasio file baru harus identik dengan file lama**.
+    *   *Risiko Teknis:* Jika dimensi berubah, titik koordinat unit yang sudah di-plotting pada modul Site Plan Interaktif akan bergeser dan tidak lagi presisi. Perubahan dimensi mengharuskan Anda melakukan plotting ulang seluruh unit kavling.
+*   **Penyimpanan Aman:** Seluruh file tersimpan secara terorganisir di sub-folder `uploads/site_plans/` dan `uploads/project_logos/`.
 
 ---
 
-## 🚜 3. Modul Konstruksi (Construction)
-Menu: **Konstruksi / Progress Pembangunan**
+## 3. Alur Teknis (Workflow)
 
-Fitur ini dirancang untuk memantau Surat Perintah Kerja (SPK) pembangunan, baik untuk unit baru, fasilitas umum (Fasum), maupun perbaikan garansi.
+### Menambah Proyek Baru
+1.  Buka menu **Admin > Proyek**.
+2.  Klik **Tambah Proyek Baru**.
+3.  Isi data identitas dan unggah Logo serta Site Plan (Jika sudah ada).
+    *   *Tips: Gunakan Logo dengan format PNG transparan agar tampilan di laporan PDF terlihat lebih profesional.*
+4.  Klik **Simpan**.
 
-### 📋 A. Membuat Target Pembangunan (SPK Baru)
-Saat kontraktor mulai bekerja, Admin Proyek/Konstruksi membuat target baru:
-1.  Klik **Buat Target Baru**.
-2.  **Pilih Tipe Target:**
-    *   🏠 **Unit:** Membangun rumah di kavling tertentu. (Hanya kavling yang *belum* punya target aktif yang muncul).
-    *   🌳 **Fasum:** Pembangunan gerbang, jalan, taman, pos satpam (Input nama manual).
-    *   🛡️ **Warranty (Garansi):** Perbaikan komplain konsumen. (Hanya muncul jika ada klaim garansi berstatus *Processed* dari modul Warranty).
-3.  **Data Kontrak:**
-    *   isi Nomor SPK, Nama Kontraktor, serta Tanggal Mulai & Selesai.
-4.  **Detail Pekerjaan (BoQ/RAB):**
-    *   Masukkan item pekerjaan (Misal: *Pondasi, Dinding, Atap*).
-    *   Isi **Volume** dan **Satuan** (m3, m2, ls).
-    *   **💡 Penting (Logika Bobot):** Sistem otomatis menghitung **Bobot %** setiap item berdasarkan proporsi volumenya terhadap total volume. Pastikan volume diinput dengan benar agar kurva S akurat.
+### Mengubah (Edit) Proyek
+1.  Klik ikon **Pensil (Kuning)** pada baris proyek.
+2.  Ubah informasi yang diperlukan.
+3.  Jika ingin mengganti file, cukup unggah file baru. AMS akan otomatis menghapus file lama dari server untuk menghemat ruang penyimpanan.
+4.  Gunakan fitur **Switch (Hapus File)** jika ingin mengosongkan file tanpa menggantinya.
 
-### 📈 B. Update Progress Mingguan (Tracking)
-Pengawas lapangan (Site Manager) mengupdate progres secara berkala:
-1.  Pilih target di tabel, klik tombol **Track Progress** (Ikon Grafik).
-2.  Di baris item pekerjaan, klik tombol **Update**.
-3.  **Input Data Real-time:**
-    *   **Realisasi %:** Masukkan persentase penyelesaian fisik di lapangan (0-100%).
-    *   **Validasi:** Sistem menolak jika angka baru *lebih kecil* dari progres sebelumnya (Progress tidak bisa mundur).
-    *   **Bukti Foto:** Wajib upload foto kondisi lapangan. Foto akan otomatis diberi *Watermark* nama proyek.
-4.  **Kalkulasi Otomatis:**
-    *   Saat Anda update 1 item, sistem akan menghitung ulang **Total Progress Proyek** berdasarkan bobot item tersebut.
-
-### 🛠️ C. Edit Detail Pekerjaan (Addendum)
-Jika di tengah jalan ada perubahan spesifikasi (Addendum):
-1.  Masuk ke menu **Edit Item**.
-2.  Anda bisa menambah item baru atau mengubah volume.
-3.  **Resiko:** Mengubah volume akan **mereset/mengubah bobot persen** item lain secara otomatis. Harap berhati-hati.
-
-### 🛡️ D. Integrasi Klaim Garansi
-Jika ada komplain dari user (Modul Warranty) yang disetujui, maka data tersebut masuk ke antrean Konstruksi.
-*   Pilih Tipe Target: **Warranty**.
-*   Pilih klaim yang tersedia.
-*   Setelah pekerjaan selesai (Progress 100%), Admin bisa menutup tiket komplain di modul Warranty.
-
-### 🔐 E. Keamanan Data (Secure Delete)
-Untuk mencegah kecurangan atau kesalahan hapus data progres:
-*   **Hapus Target DIBATASI.** Anda tidak bisa menghapus target yang sudah memiliki progres (Progres > 0%).
-*   Jika terpaksa hapus (misal salah input total), Anda memerlukan **Otorisasi Admin** (Token Delete) melalui sistem *Secure Delete Authorization*.
+### Menghapus Proyek
+AMS menyertakan **Fitur Keamanan Penghapusan**. Jika sebuah proyek sudah memiliki data terkait (seperti unit kavling, daftar prospek, user atau data booking), maka tombol hapus akan ditolak oleh AMS dengan pesan peringatan. Hal ini untuk menjaga integritas data agar tidak ada transaksi yang menjadi "yatim" atau hilang secara tidak sengaja.
 
 ---
 
-## 📊 Summary Logic (Ringkasan Logika Sistem)
+## FAQ
 
-| Fitur | Logika / Rumus |
-| :--- | :--- |
-| **Bobot Item** | _(Volume Item / Total Volume Semua Item) * 100_ |
-| **Kontribusi Progres** | _(Bobot Item * % Progress Item) / 100_ |
-| **Total Progres** | Sum of (Kontribusi Progres semua item) |
-| **Ketersediaan Unit** | Unit hanya muncul di list "Buat Target" jika BELUM ada target konstruksi aktif padanya. |
-| **Hapus Data** | Hanya bisa jika progres masih 0% **DAN** sudah dapat *Override Token* dari Admin. |
+**Q: Apakah menghapus proyek akan menghapus data kavling/booking di dalamnya?**
+> **TIDAK BISA.** AMS akan memblokir proses penghapusan jika proyek tersebut sudah memiliki data aktif (User, Kavling, Prospek, atau Booking). Anda harus menghapus data-data terkait tersebut terlebih dahulu jika benar-benar ingin menghapus master proyeknya. Hal ini adalah prosedur keamanan untuk mencegah kehilangan data massal secara tidak sengaja.
+
+**Q: Mengapa logo tidak muncul di cetakan laporan PDF?**
+> Pastikan Anda telah mengunggah Logo di modul ini. AMS mengambil logo secara dinamis berdasarkan `project_id` yang sedang aktif saat laporan dicetak. Jika logo belum diunggah, header laporan akan tampil standar tanpa logo.
+
+**Q: Mengapa saya harus menggunakan dimensi gambar yang sama saat update Site Plan?**
+> Karena modul Site Plan Interaktif AMS menyimpan data lokasi unit dalam koordinat piksel (atau persentase relatif). Jika gambar baru lebih lebar, lebih tinggi, atau memiliki perbandingan (rasio) yang berbeda, maka titik-titik unit yang sudah dibuat sebelumnya akan "melenceng" dari gambar bangunan di peta. Pastikan tim desain memberikan file revisi dengan resolusi yang sama persis.
+
+**Q: Saya sudah menambah proyek, tapi sales tidak bisa melihatnya?**
+> Pastikan user Sales tersebut sudah diberikan akses melalui modul **User Management** atau akun mereka sudah disetting untuk memiliki akses ke proyek baru tersebut.

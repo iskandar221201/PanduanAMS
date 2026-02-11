@@ -14,7 +14,7 @@ Fondasi data untuk seluruh operasional. Modul ini digunakan oleh **Admin Project
 *   **Digital Siteplan:** Peta interaktif yang memvisualisasikan status unit secara visual di atas gambar denah proyek.
 *   **Harga Kavling:** Pengaturan harga jual standar dan riwayat perubahan harga.
 
-> 📘 **Dokumentasi Lengkap:** Lihat [Panduan Proyek & Konstruksi](project&konstuksi.md)
+
 
 ---
 
@@ -31,7 +31,6 @@ Ujung tombak bisnis untuk pengelolaan prospek dan konversi penjualan. Digunakan 
     *   **Pencatatan Booking:** Input data pemesanan unit (UTJ) yang memotong stok.
     *   **SPR Generator:** Cetak Surat Pemesanan Rumah (SPR) otomatis berdasarkan template dinamis.
 
-> 📘 **Dokumentasi Lengkap:** Lihat [Panduan CRM & Leads](crm&leads.md)
 
 ---
 
@@ -43,7 +42,7 @@ Pemantauan progres fisik pembangunan di lapangan. Digunakan oleh **Tim Teknik & 
 *   **Progress Tracking:** Laporan progres mingguan dengan bobot persentase otomatis (Kurva S) dan bukti foto lapangan.
 *   **Warranty System (Garansi):** Portal penanganan komplain konsumen pasca-serah terima (Masa Retensi).
 
-> 📘 **Dokumentasi Lengkap:** Lihat [Panduan Proyek & Konstruksi](project&konstuksi.md)
+
 
 ---
 
@@ -96,10 +95,5 @@ Pengaturan keamanan dan hak akses pengguna.
 *   **Notifikasi Sistem:** Pengaturan notifikasi otomatis (misal: Notifikasi Jatuh Tempo, Notifikasi Approval).
 
 ---
-
-## 🧭 Navigasi Cepat
-Untuk memulai, silakan akses halaman utama:
-*   [**Dashboard Area**](dashboard.md): Ringkasan metrik kinerja & navigasi cepat.
-*   [**Login Portal**](../../public/login): Halaman masuk aplikasi.
 
 

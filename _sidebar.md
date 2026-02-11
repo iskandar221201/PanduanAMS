@@ -5,24 +5,37 @@
 
 * **Modul Utama**
   * [Ringkasan Dashboard](modules/dashboard.md)
+  * [Manajemen Proyek](modules/projects.md)
+  * [Manajemen Pengguna](modules/user.md)
+  * [Manajemen Akses](modules/role.md)
+  * [Manajemen Kavling](modules/kavling.md)
+  * [Manajemen Harga Kavling](modules/hargakavling.md)
   * [Prospek/Leads](modules/leads.md)
   * [CRM](modules/crm.md)
+  * [WhatsApp Blast](modules/blast.md)
   * [Monitor Prospek](modules/monitorleads.md)
+  * [Funnel Marketing](modules/funnel.md)
   * [SLIK](modules/slik.md)
   * [Pengajuan Booking](modules/ajubooking.md)
+  * [Temp & Upload SPR](modules/tempUploadSPR.md)
   * [Booking](modules/booking.md)
-  * [Manajemen Proyek](modules/projects.md)
-  * [Keuangan](modules/finance.md)
-
+  * [Pemberkasan](modules/berkas.md)
+  * [Master Berkas KPR](modules/masterberkas.md)
+  * [Proses Bank](modules/bank.md)
+  * [SP3K](modules/sp3k.md)
+  * [Akad](modules/akad.md)
+  * [Keuangan](modules/keuangan.md)
+  * [Jurnal Pembalik](modules/jurnalpembalik.md)
+  * [Pengajuan Dana](modules/pengajuandana.md)
+  * [Manajemen Konstruksi](modules/construction.md)
+  * [Manajemen BAST](modules/bast.md)
+  * [Manajemen Garansi](modules/garansi.md)
+  * [Siteplan](modules/siteplan.md)
+  * [ADS management](modules/ads.md)
+  * [Delete Auth](modules/authdelete.md)
 * **Fitur**
-  * [Pelaporan](features/reporting.md)
-  * [Manajemen Pengguna](features/users.md)
-  * [Pengaturan](features/settings.md)
+  * [Dark Mode](features/darkmode.md)
+  * [Shortcut Navigation](features/shortcut.md)
+  * [Notifikasi](features/notification.md)
 
-* **Bantuan**
-  * [FAQ](faq.md)
-  * [Pemecahan Masalah](troubleshooting.md)
-  * [Hubungi IT](contact.md)
-
-* **Untuk Kontributor**
-  * [Panduan Penulisan](WRITING_GUIDE.md)
+  
