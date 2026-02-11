@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>AMS Documentation</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="description" content="Panduan Penggunaan Sistem AMS">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify@4/lib/themes/vue.css">
+
+    <style>
+        :root {
+            --theme-color: #4f46e5; /* Indigo 600 - Modern Accent */
+            --sidebar-width: 280px;
+            --text-color: #334155;
+            --bg-sidebar: #f8fafc;
+            --heading-color: #1e293b;
+        }
+
+        /* Typography */
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--text-color);
+            line-height: 1.7; /* Lebih lega */
+        }
+
+        h1, h2, h3, h4, h5 {
+            font-weight: 700;
+            color: var(--heading-color);
+            letter-spacing: -0.025em; /* Tight tracking for headings */
+        }
+
+        /* Sidebar Styling */
+        .sidebar {
+            background-color: var(--bg-sidebar);
+            border-right: 1px solid #e2e8f0;
+        }
+        
+        .sidebar-nav li {
+            margin: 6px 0;
+        }
+
+        .sidebar-nav li a {
+            border-radius: 6px;
+            padding: 6px 12px;
+            transition: all 0.2s ease;
+            font-weight: 500;
+        }
+
+        .sidebar-nav li.active > a {
+            background-color: #e0e7ff; /* Indigo 100 */
+            color: var(--theme-color);
+            border-right: none; /* Hapus border default docsify */
+            font-weight: 600;
+        }
+
+        /* Content Area */
+        .content {
+            padding-top: 40px;
+        }
+
+        .markdown-section {
+            max-width: 850px; /* Batasi lebar agar enak dibaca */
+            margin: 0 auto;
+        }
+
+        /* Code Blocks */
+        .markdown-section pre {
+            background-color: #1e293b; /* Dark Slate */
+            border-radius: 8px;
+            padding: 20px;
+        }
+
+        .markdown-section code {
+            font-family: 'JetBrains Mono', monospace;
+            color: #e2e8f0;
+        }
+        
+        /* Inline Code */
+        .markdown-section p code, .markdown-section li code {
+            color: var(--theme-color);
+            background: #eff6ff;
+            padding: 3px 6px;
+            border-radius: 4px;
+        }
+
+        /* Blockquotes / Callouts */
+        .markdown-section blockquote {
+            background: #f0f9ff;
+            border-left: 4px solid #0ea5e9; /* Sky Blue */
+            color: #0c4a6e;
+            border-radius: 4px;
+            padding: 16px;
+            margin: 2em 0;
+        }
+
+        /* Custom Loader */
+        #app {
+            display: flex;
+            height: 100vh;
+            justify-content: center;
+            align-items: center;
+            font-weight: 600;
+            color: var(--theme-color);
+            font-size: 1.2rem;
+        }
+        
+        /* Search Box */
+        .sidebar .search {
+            border-bottom: 1px solid #e2e8f0;
+            background: transparent;
+        }
+        .sidebar .search input {
+            border: 1px solid #cbd5e1;
+            border-radius: 6px;
+            background: white;
+            padding: 8px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">Memuat AMS Docs...</div>
+
+    <script>
+        window.$docsify = {
+            name: '<span style="font-weight:800; color:#4f46e5;">AMS</span> Docs', // Logo Text
+            repo: '', 
+            
+            // Layout Options
+            loadSidebar: true,
+            loadNavbar: false, // Set true if you create _navbar.md
+            coverpage: false,  // Set true if you create _coverpage.md
+            auto2top: true,
+            
+            // Configuration
+            homepage: 'README.md',
+            themeColor: '#4f46e5', // Matches CSS var
+            
+            // Search Plugin Config
+            search: {
+                maxAge: 86400000,
+                paths: 'auto',
+                placeholder: 'Cari panduan...',
+                noData: 'Tidak ditemukan.',
+                depth: 6,
+                hideOtherSidebarContent: false, 
+            },
+
+            // Copy Code Config
+            copyCode: {
+                buttonText: 'Salin',
+                errorText: 'Gagal',
+                successText: 'Tersalin'
+            }
+        }
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/docsify@4"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/docsify/lib/plugins/search.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/docsify/lib/plugins/zoom-image.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/docsify-copy-code/dist/docsify-copy-code.min.js"></script>
+
+    <script src="//cdn.jsdelivr.net/npm/docsify-sidebar-collapse/dist/docsify-sidebar-collapse.min.js"></script>
+
+    <script>
+        // Safety check for local file opening
+        if (location.protocol === 'file:') {
+            console.warn("Docsify works best on a local server (localhost).");
+        }
+    </script>
+</body>
+
+</html>

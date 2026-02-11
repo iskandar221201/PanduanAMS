@@ -1,0 +1,329 @@
+/* Modern Clean Aesthetics - Inter Font & Tailwind-inspired Colors */
+
+:root {
+    --primary-color: #38bdf8;
+    /* Sky 400 */
+    --hover-color: #0ea5e9;
+    /* Sky 500 */
+    --bg-dark: #0f172a;
+    /* Slate 900 */
+    --bg-light: #ffffff;
+    --text-dark: #e2e8f0;
+    /* Slate 200 */
+    --text-light: #334155;
+    /* Slate 700 */
+    --sidebar-width: 300px;
+}
+
+/* General Layout & Typography */
+body {
+    font-family: 'Inter', sans-serif !important;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* Main Content Area */
+.content {
+    padding-top: 40px;
+    padding-bottom: 60px;
+    max-width: 900px !important;
+    /* Wider for better readability */
+    margin: 0 auto;
+}
+
+.markdown-section {
+    max-width: 100%;
+    padding: 2rem 3rem;
+}
+
+/* Typography Improvements */
+.markdown-section h1,
+.markdown-section h2,
+.markdown-section h3,
+.markdown-section h4 {
+    font-weight: 600;
+    letter-spacing: -0.025em;
+    margin-top: 1.5em;
+    margin-bottom: 0.5em;
+}
+
+.markdown-section h1 {
+    font-size: 2.5rem;
+    border-bottom: none;
+    /* Cleaner look */
+    margin-bottom: 1rem;
+}
+
+.markdown-section h2 {
+    font-size: 1.75rem;
+    border-bottom: 1px solid var(--border-color, #e2e8f0);
+    padding-bottom: 0.3em;
+}
+
+.markdown-section p {
+    line-height: 1.7;
+    margin-bottom: 1.2em;
+    font-size: 1.05rem;
+}
+
+/* Sidebar Customization */
+.sidebar {
+    width: var(--sidebar-width);
+    border-right: 1px solid rgba(0, 0, 0, 0.05);
+    /* Subtle border */
+    padding-top: 20px;
+}
+
+.sidebar .app-name img {
+    max-width: 140px;
+    /* Adjust logo size */
+    margin: 20px auto;
+}
+
+.sidebar-nav>ul>li {
+    margin: 0.5rem 0;
+}
+
+.sidebar-nav li>a {
+    font-size: 15px;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    border-radius: 6px;
+    margin: 0 10px;
+    padding: 6px 12px;
+}
+
+/* Sidebar Active State - Modern Pill Style */
+.sidebar-nav li.active>a {
+    background: rgba(56, 189, 248, 0.1);
+    color: var(--primary-color) !important;
+    border-right: none !important;
+    /* Remove default border */
+}
+
+/* Hero Section (Cover Page) Overrides */
+section.cover {
+    background-color: var(--bg-dark) !important;
+    background-image: none !important;
+}
+
+section.cover .cover-main {
+    margin-top: -2rem;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+section.cover h1 {
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    font-size: 2.8rem;
+    color: #ffffff !important;
+    line-height: 1.2;
+    word-break: keep-all;
+    overflow-wrap: break-word;
+    hyphens: none;
+    padding: 0 1rem;
+}
+
+/* Hero Logo Override */
+section.cover img {
+    max-width: 120px !important;
+    margin-bottom: 0px;
+}
+
+section.cover blockquote {
+    font-size: 1.15rem;
+    font-weight: 400;
+    color: #cbd5e1 !important;
+    /* Slate 300 - high contrast */
+    opacity: 1;
+}
+
+section.cover blockquote p {
+    color: #cbd5e1 !important;
+}
+
+section.cover small {
+    color: #94a3b8 !important;
+    /* Slate 400 */
+}
+
+/* Dark mode hero text — high contrast */
+body[class*="dark"] section.cover h1 {
+    color: #ffffff !important;
+}
+
+body[class*="dark"] section.cover blockquote,
+body[class*="dark"] section.cover blockquote p {
+    color: #cbd5e1 !important;
+    /* Slate 300 */
+    opacity: 1 !important;
+}
+
+body[class*="dark"] section.cover small {
+    color: #94a3b8 !important;
+    /* Slate 400 */
+}
+
+/* Light mode hero text — maximum contrast */
+body[class*="light"] section.cover h1 {
+    color: #020617 !important;
+    /* Slate 950 */
+}
+
+body[class*="light"] section.cover blockquote,
+body[class*="light"] section.cover blockquote p {
+    color: #1e293b !important;
+    /* Slate 800 */
+    opacity: 1 !important;
+}
+
+body[class*="light"] section.cover small {
+    color: #334155 !important;
+    /* Slate 700 */
+}
+
+/* Responsive Hero Text */
+@media (max-width: 768px) {
+    section.cover h1 {
+        font-size: 1.8rem !important;
+        letter-spacing: -0.01em;
+        padding: 0 1.5rem;
+    }
+
+    section.cover .cover-main {
+        max-width: 100%;
+        padding: 0 1rem;
+    }
+
+    section.cover blockquote {
+        font-size: 1rem;
+        padding: 0 1rem;
+    }
+
+    section.cover .cover-main a {
+        padding: 0.6rem 1.5rem;
+        font-size: 0.9rem;
+    }
+}
+
+/* Button Styling (Cover Page) */
+section.cover .anchor span {
+    color: var(--primary-color);
+}
+
+/* Hero Buttons */
+section.cover .cover-main a {
+    display: inline-block;
+    padding: 0.8rem 2.5rem;
+    border-radius: 99px;
+    /* Pill shape */
+    font-weight: 600;
+    text-decoration: none !important;
+    transition: all 0.2s ease;
+    margin: 0.5rem;
+    border: 2px solid transparent;
+    font-size: 1rem;
+}
+
+/* Primary Button (First Link: Mulai Sekarang) */
+section.cover .cover-main p a:nth-of-type(1) {
+    background-color: var(--primary-color);
+    color: #ffffff !important;
+    box-shadow: 0 4px 14px 0 rgba(56, 189, 248, 0.39);
+}
+
+section.cover .cover-main p a:nth-of-type(1):hover {
+    background-color: var(--hover-color);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(56, 189, 248, 0.23);
+}
+
+/* Secondary Button (Second Link: Pelajari Lebih Lanjut) */
+section.cover .cover-main p a:nth-of-type(2) {
+    background-color: transparent;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    color: #cbd5e1 !important;
+    /* Slate 300 to match dark theme text */
+}
+
+section.cover .cover-main p a:nth-of-type(2):hover {
+    border-color: var(--primary-color);
+    background: rgba(56, 189, 248, 0.1);
+    color: var(--primary-color) !important;
+}
+
+/* Light mode override for secondary button text */
+body.light section.cover .cover-main p a:nth-of-type(2) {
+    border-color: rgba(51, 65, 85, 0.2);
+    /* Slate 700 with opacity */
+    color: #334155 !important;
+    /* Slate 700 */
+}
+
+/* Code Blocks */
+.markdown-section pre {
+    border-radius: 8px;
+    padding: 1.2rem;
+    margin: 1.5rem 0;
+}
+
+/* Table Styling */
+.markdown-section table {
+    display: table;
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 1.5rem;
+}
+
+.markdown-section table th,
+.markdown-section table td {
+    padding: 12px 16px;
+    border: 1px solid rgba(128, 128, 128, 0.15);
+}
+
+/* Dark Mode Specific Overrides */
+body[class*="dark"] .sidebar {
+    border-right: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+body[class*="dark"] .markdown-section h2 {
+    border-bottom-color: rgba(255, 255, 255, 0.1);
+}
+
+body[class*="dark"] section.cover {
+    background-color: #0f172a !important;
+}
+
+body[class*="light"] section.cover {
+    background-color: #f8fafc !important;
+}
+
+/* Light mode secondary button override */
+body[class*="light"] section.cover .cover-main p a:nth-of-type(2) {
+    border-color: #94a3b8;
+    /* Slate 400 - visible border */
+    color: #1e293b !important;
+    /* Slate 800 */
+}
+
+body[class*="light"] section.cover .cover-main p a:nth-of-type(2):hover {
+    border-color: var(--primary-color);
+    color: var(--primary-color) !important;
+}
+
+/* Scrollbar Customization */
+::-webkit-scrollbar {
+    width: 6px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgba(128, 128, 128, 0.2);
+    border-radius: 3px;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
